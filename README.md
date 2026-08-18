@@ -9,6 +9,10 @@ under Fiscal Uncertainty: Evidence from Fiscal Policy Uncertainty and U.S.
 Government Shutdowns* — Lennert Van Steen, Ghent University, supervised by
 Prof. Dr. Mikael Petitjean, academic year 2025–2026.
 
+The full dissertation is included as [`thesis.pdf`](thesis.pdf) — 44 pages, with
+the complete argument, literature review and regression tables behind the
+summary below.
+
 ## Research question
 
 Does the market's reaction to a macroeconomic surprise depend on the prevailing
@@ -195,6 +199,7 @@ regressions, but the adjustment is reported alongside them in the workbook.
 ## Contents
 
 ```
+thesis.pdf                          the full dissertation, 44 pages
 fpu_event_study.py                  full pipeline: load → returns → clean → estimate → save
 data/mastersheet_epu.xlsx           announcement panel with FPU index
 data/mastersheet_shutdowns.xlsx     announcement panel with shutdown flags
