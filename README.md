@@ -2,14 +2,31 @@
 
 Event study of ES (S&P 500) and ZN (10-year Treasury) intraday reactions to U.S.
 macroeconomic announcements under fiscal policy uncertainty and government
-shutdowns. MSc thesis, Ghent University.
+shutdowns.
+
+Code and results for the dissertation *Macroeconomic Announcement Surprises
+under Fiscal Uncertainty: Evidence from Fiscal Policy Uncertainty and U.S.
+Government Shutdowns* — Lennert Van Steen, Ghent University, supervised by
+Prof. Dr. Mikael Petitjean, academic year 2025–2026.
 
 ## Research question
 
 Does the market's reaction to a macroeconomic surprise depend on the prevailing
 level of fiscal policy uncertainty? Two identification strategies are used side
-by side: a continuous monthly fiscal policy uncertainty (FPU) index, and the
+by side: a continuous monthly fiscal policy uncertainty (FPU) index built from
+the fiscal-policy component of the Baker, Bloom & Davis (2016) index, and the
 discrete episodes of U.S. federal government shutdowns.
+
+The headline result is that **fiscal uncertainty does not scale announcement
+reactions uniformly — it reshapes them selectively**, activating equity
+reactions to releases that are ignored under normal conditions, amplifying a
+few others, dampening the bond market's response to real activity, and
+producing an opposite-signed cross-market reaction for a subset of releases.
+
+Hypotheses tested: H1 surprises move markets; H2 FPU amplifies the average
+reaction; H2a the effect differs across release types; H3a–H3d shutdown
+windows and delayed releases; H4 equity and Treasury markets move in opposite
+directions under fiscal stress (flight-to-safety).
 
 The dependent variable is the intraday futures return around the release,
 measured in basis points over a 5-minute window from the announcement bar
@@ -64,52 +81,116 @@ see how the estimate moves as structure is added:
 | Asymmetry | MA1, MA2 | positive vs negative surprise split |
 | Robustness | §10–11b | return windows, lagged FPU, COVID σ basis, winsorised sample, FPU thresholds at the 70/75/80/90th percentile |
 
+Model 4 — per-type surprise slopes βⱼ with per-type FPU interactions δⱼ, signed
+returns, announcement fixed effects, event-time clustered errors — is the main
+specification. Because the contemporaneous monthly FPU incorporates news
+published after early-month releases, it is an ex-post regime classification;
+the prior-month (lagged) specification is therefore treated as **co-main**
+rather than as robustness.
+
 Standard errors are reported two ways throughout — clustered on `event_id` (main)
-and HC3 (robustness). Per-type regressions carry Bonferroni-adjusted p-values
-alongside the raw ones.
+and HC3 (robustness).
 
 ## Findings
 
-**Pooled effects are absent.** MC2 (pooled continuous FPU) gives −0.31 bps,
-p = 0.44, R² = 0.007. The dummy equivalent M2 gives 0.82 bps, p = 0.38. There is
-no average FPU effect on announcement reactions to be found in this sample.
+**H1 confirmed — surprises move markets.** Pooled absolute surprise on absolute
+return: +1.93 bps, p < 0.01 (N = 2,855). Adjusted R² is 0.005, as expected when
+one common slope is imposed across sixteen heterogeneous releases.
 
-**Type-specific effects exist but cut both ways.** In the main specification
-(MC4, event-clustered, N = 2,367, R² = 0.157), per 1-SD increase in FPU:
+**H2 not supported at the pooled level.** Adding FPU and its interaction leaves
+the surprise effect unchanged and the interaction insignificant (−0.52, ns;
+−0.31, ns with type FE). FPU does carry a significant *level* effect of +1.18 bps
+(p < 0.01) — reactions are larger in magnitude when fiscal uncertainty is high —
+but it does not amplify the average surprise sensitivity. This null is
+informative rather than empty: a single pooled slope averages amplification in
+some releases against dampening in others.
 
-| Release | ES reaction | p |
+**H2a confirmed — the effect is selective, not uniform.** Once each release gets
+its own slope (Model 4, N = 2,367 ES / 2,365 ZN), three distinct patterns appear.
+δⱼ is the effect of a one-SD increase in FPU, in bps:
+
+*Activation* — insignificant baseline slope, significant interaction; these
+releases start to matter for equities only under fiscal stress:
+
+| Release | βⱼ (ES) | δⱼ (ES) |
 |---|---|---|
-| NFP | +9.71 bps | 0.027 |
-| ISM PMI | +6.16 bps | 0.038 |
-| Existing home sales | +3.05 bps | 0.032 |
-| Consumer credit | −1.20 bps | 0.005 |
-| Retail sales | −3.92 bps | 0.023 |
-| Construction spending | −4.77 bps | 0.008 |
-| Unemployment rate | −9.04 bps | 0.005 |
+| NFP | 3.97 ns | **+9.71** ** |
+| Unemployment rate | 2.30 ns | **−9.04** *** |
+| Consumer credit | 0.47 ns | **−1.20** *** |
 
-Several of these are *dampening* — the market reacts less to a given surprise
-when fiscal uncertainty is high — which is the opposite sign to the
-amplification hypothesised. Reported as found.
+The opposite signs are economically coherent: a positive NFP surprise is a
+strong labour market, a positive unemployment surprise is a weak one.
 
-**Almost nothing survives multiple-testing correction.** With 16 release types
-the Bonferroni threshold is p < 0.0031. In the per-type regressions only
-construction spending clears it (β = −7.49, p = 0.0018, Bonferroni p = 0.029).
-Unemployment rate, consumer credit and retail sales do not. The type-specific
-results above should be read as suggestive, not established.
+*Amplification* — interaction shares the sign of an already-significant baseline:
+Existing home sales (β = +2.44**, δ = +3.05**) and ISM PMI (β = +11.77***,
+δ = +6.16**).
 
-**The most robust single result is on delayed releases.** M13c: for releases
-postponed by a shutdown, the interaction of absolute surprise with the delayed
-flag is −2.37 bps, p = 0.0008 — stale news moves the market less. This clears
-Bonferroni comfortably and is the one finding the sample supports strongly. It
-does not replicate on ZN (−0.52 bps, p = 0.35).
+*Bond-market dampening* — for real-activity releases the ZN interaction runs
+against its baseline, pulling the reaction toward zero: Industrial production
+(β = −1.12***, δ = +0.60*) and GDP (β = −3.78***, δ = +2.47*).
 
-**Shutdown level effects are null.** Active shutdown: −1.06 bps, p = 0.61.
-Post-window: 0.47 bps, p = 0.87. Episode: 0.63 bps, p = 0.75. Only the
-pre-window shows anything (−2.95 bps, p = 0.017, on 72 observations — too few to
-lean on).
+**H4 confirmed — flight-to-safety.** For a subset of releases, equities and
+Treasuries move in *opposite* directions on the same surprise under fiscal
+stress. Clearest for Retail sales:
 
-**No asymmetry detected.** MA1/MA2 find no release type where positive and
-negative surprises are priced differently.
+| Release | δⱼ ES | δⱼ ZN |
+|---|---|---|
+| Retail sales | −3.92 ** | **+4.80** ** |
+| Construction spending | −4.77 *** | +1.59 * |
+
+Equities sell off while Treasury prices rise — the configuration Baele et al.
+(2020) associate with risk-off reallocation. Because it operates across two
+markets at once, it is hard to reconcile with a pure noise or attention story,
+which would not predict a coordinated opposite-signed move.
+
+For context, the largest *baseline* reactions are CPI (ES −23.80***, ZN
+−12.49***) and, on the bond side, NFP (ZN −15.80***) — the payroll component
+dominates the employment report for Treasuries, consistent with Balduzzi et al.
+(2001).
+
+**The main equity results hold under the real-time-valid lagged FPU.** NFP
+(+8.63**), unemployment rate (−5.41**), consumer credit (−0.93*), retail sales
+(−4.98***) and ISM PMI (+5.29**) all keep sign and significance. Existing home
+sales and construction spending lose significance and are treated with more
+caution. A 75th-percentile regime dummy corroborates the core effects
+independently.
+
+**H3b rejected — in the opposite direction.** Equity sensitivity is *dampened*
+in the 20-day pre-shutdown window (−2.95 bps, p < 0.05), where amplification was
+predicted. Active and post windows show no pooled effect (−1.06 ns, +0.47 ns),
+so H3c is unsupported and H3a is uninformative given the limited power.
+
+**H3d rejected — also in the opposite direction.** Releases delayed by a
+shutdown produce a *weaker* equity reaction to their surprise content, not the
+stronger one an information-backlog mechanism predicts: interaction −2.37 bps,
+p < 0.01, against a full-sample surprise slope of +2.07 bps. The effect is
+equity-specific — ZN shows nothing (−0.52, ns). Candidate explanations: the
+information has already reached the market by other routes, the release is
+partly anticipated once the shutdown resolves, or data compiled under disrupted
+conditions is discounted as lower quality.
+
+**Robustness.** Signs and significance of the principal interactions survive
+HC3 errors, winsorising forecast errors at the 1st/99th percentiles, alternative
+event windows ([0,+10], [0,+15], [0,+30], [−5,+5]), and computing surprise σ
+over the full sample including COVID.
+
+### How much weight the shutdown results carry
+
+Deliberately less than the FPU results. The identifying variation comes from a
+handful of episodes: the pre-window rests on four to six observations per
+release, the post-window on eight to twelve, and the active window on roughly
+sixty spread very unevenly (one for GDP). Type-specific shutdown coefficients
+are correspondingly large and imprecise — the −69.64 bps pre-window
+unemployment-rate estimate comes from four observations and exceeds every
+baseline reaction in the sample. Those estimates are reported to document
+heterogeneity, not as stable effects; the pooled shutdown models are the
+trustworthy layer.
+
+As a further check, the standalone per-type regressions carry Bonferroni-adjusted
+p-values for the sixteen simultaneous tests (threshold p < 0.0031). Only
+construction spending clears it there. The Model 4 estimates above are jointly
+estimated with fixed effects and clustered errors rather than sixteen separate
+regressions, but the adjustment is reported alongside them in the workbook.
 
 ## Contents
 
@@ -149,10 +230,19 @@ spent reading the 20 MB ES workbook, and rewrites
 
 ## Limitations
 
-- Single-country, single-decade sample; 16 release types, several with few events.
+- **Few shutdown episodes.** The binding constraint. Effective degrees of freedom
+  are small and the type-specific shutdown estimates are imprecise, which is why
+  they are read as suggestive throughout. Extending the sample backwards using
+  Money Market Services survey forecasts, which predate this sample, would add
+  earlier shutdown episodes and sharpen the event-based identification.
+- **No business-cycle control.** Reactions are conditioned on fiscal uncertainty
+  alone, yet announcement effects are known to be state-dependent — the same
+  surprise can move markets in opposite directions in expansion versus
+  contraction (McQueen & Roley 1993; Boyd et al. 2005). If fiscal stress
+  coincides with particular cycle phases, part of the estimated FPU effect may
+  reflect the underlying economic state.
+- **Coarse regime variable.** FPU is monthly while the outcome is intraday.
+- **One measure, two asset classes.** A single newspaper-based fiscal
+  uncertainty index, and only equity and Treasury futures.
 - Consensus forecasts are vendor point estimates, so surprise is measured with error.
-- The shutdown sub-samples are small (41–152 observations) and the pre-window
-  result in particular is fragile.
-- FPU is monthly while the outcome is intraday, so the regime variable is coarse
-  relative to the event.
-- The type-specific results do not survive Bonferroni correction, as noted above.
+- Single-country sample; 16 release types, several with few events.
