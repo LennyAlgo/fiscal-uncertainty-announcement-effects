@@ -1,4 +1,6 @@
-pandas>=2.2
-numpy>=1.26
-statsmodels>=0.14
-openpyxl>=3.1
+# Versions this pipeline was run and verified against (Python 3.11).
+# Pinned because statsmodels formula handling has shifted across releases.
+pandas==3.0.2
+numpy==1.26.4
+statsmodels==0.14.6
+openpyxl==3.1.5

@@ -62,7 +62,7 @@ it but does not build it.
 
 Sample handling worth knowing about:
 
-- **COVID excluded.** 62 event rows dropped (Mar–Dec 2020). Surprise
+- **COVID excluded.** 62 event rows dropped (April–July 2020). Surprise
   standardisation uses non-COVID σ per release type, computed uniformly in code.
   Section 10c re-runs the main specification with full-sample σ to show the
   standardisation basis does not drive the results.
@@ -200,6 +200,7 @@ regressions, but the adjustment is reported alongside them in the workbook.
 
 ```
 thesis.pdf                          the full dissertation, 44 pages
+LICENSE                             MIT for the code; see scope note within
 fpu_event_study.py                  full pipeline: load → returns → clean → estimate → save
 data/mastersheet_epu.xlsx           announcement panel with FPU index
 data/mastersheet_shutdowns.xlsx     announcement panel with shutdown flags
@@ -221,7 +222,13 @@ To supply your own, place them in `data/futures/` as
 elsewhere:
 
 ```bash
+# bash / zsh
 FUTURES_DIR=/path/to/bars python fpu_event_study.py
+```
+
+```powershell
+# PowerShell
+$env:FUTURES_DIR = "C:\path\to\bars"; python fpu_event_study.py
 ```
 
 Both files need columns `ts_event, open, high, low, close, volume, return` at
