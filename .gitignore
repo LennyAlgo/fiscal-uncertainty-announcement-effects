@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Licensed futures bars — never commit (see README, Data availability)
+data/futures/
+*.csv
+ES_5min*
+ZN_5min*
