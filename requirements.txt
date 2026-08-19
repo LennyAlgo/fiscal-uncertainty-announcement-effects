@@ -1,5 +1,9 @@
-# Versions this pipeline was run and verified against (Python 3.11).
-# Pinned because statsmodels formula handling has shifted across releases.
+# Verified on Python 3.11 (3.11.15). Versions are pinned because statsmodels
+# formula handling has shifted across releases.
+#
+# These pins require Python 3.11 or 3.12: numpy 1.26.4 ships no wheel for
+# Python 3.13+, where pip would try to build it from source. On a newer
+# interpreter, relax numpy to >=2.0 — the analysis does not depend on it.
 pandas==3.0.2
 numpy==1.26.4
 statsmodels==0.14.6

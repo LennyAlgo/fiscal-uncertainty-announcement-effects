@@ -50,11 +50,18 @@ The two announcement mastersheets in `data/` carry release date and time, type,
 raw and standardised surprise, the FPU level, and the shutdown / pre-window /
 post-window / delayed-release flags. They contain no price data.
 
-Surprises are computed against Reuters consensus forecasts. The underlying
-`Actual` and `Forecast` columns are vendor data and are **not** redistributed
-here — the published panels carry only the derived surprise measures, which is
-what the analysis consumes. Nothing in the pipeline reads the raw forecast
-columns, so their removal does not affect reproducibility.
+Surprises are computed against Reuters consensus forecasts. What is published
+here are the derived surprise measures rather than the vendor forecast series:
+the `Actual` and `Forecast` columns have been removed, and nothing in the
+pipeline reads them, so their removal does not affect reproducibility. Note
+that this is a matter of not redistributing the forecast series, not of making
+it unrecoverable — `Suprise_raw` is actual minus forecast, and the actuals are
+public, so the consensus values can be backed out arithmetically. Publishing
+derived surprise measures is standard practice in this literature.
+
+Column spellings are preserved exactly as they appear in the source workbooks
+(`Suprise_raw`, `Date convertet to 1st`); the pipeline matches on those names,
+so they are left as-is rather than corrected.
 
 `FPU_raw` enters as a pre-constructed monthly composite. Its construction is
 documented in the thesis and is upstream of this script — the code standardises
@@ -209,6 +216,9 @@ requirements.txt
 ```
 
 ## Reproducing
+
+Python 3.11 or 3.12 (verified on 3.11.15 — see the note in `requirements.txt`
+about newer interpreters).
 
 ```bash
 pip install -r requirements.txt
