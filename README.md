@@ -125,20 +125,23 @@ releases start to matter for equities only under fiscal stress:
 
 | Release | βⱼ (ES) | δⱼ (ES) |
 |---|---|---|
-| NFP | 3.97 ns | **+9.71** ** |
-| Unemployment rate | 2.30 ns | **−9.04** *** |
-| Consumer credit | 0.47 ns | **−1.20** *** |
+| NFP | 3.97 ns | `+9.71**` |
+| Unemployment rate | 2.30 ns | `−9.04***` |
+| Consumer credit | 0.47 ns | `−1.20***` |
+
+Significance throughout: `***` p<0.01, `**` p<0.05, `*` p<0.10, `ns` not
+significant.
 
 The opposite signs are economically coherent: a positive NFP surprise is a
 strong labour market, a positive unemployment surprise is a weak one.
 
 *Amplification* — interaction shares the sign of an already-significant baseline:
-Existing home sales (β = +2.44**, δ = +3.05**) and ISM PMI (β = +11.77***,
-δ = +6.16**).
+Existing home sales (β = `+2.44**`, δ = `+3.05**`) and ISM PMI (β = `+11.77***`,
+δ = `+6.16**`).
 
 *Bond-market dampening* — for real-activity releases the ZN interaction runs
 against its baseline, pulling the reaction toward zero: Industrial production
-(β = −1.12***, δ = +0.60*) and GDP (β = −3.78***, δ = +2.47*).
+(β = `−1.12***`, δ = `+0.60*`) and GDP (β = `−3.78***`, δ = `+2.47*`).
 
 **H4 confirmed — flight-to-safety.** For a subset of releases, equities and
 Treasuries move in *opposite* directions on the same surprise under fiscal
@@ -146,22 +149,22 @@ stress. Clearest for Retail sales:
 
 | Release | δⱼ ES | δⱼ ZN |
 |---|---|---|
-| Retail sales | −3.92 ** | **+4.80** ** |
-| Construction spending | −4.77 *** | +1.59 * |
+| Retail sales | `−3.92**` | `+4.80**` |
+| Construction spending | `−4.77***` | `+1.59*` |
 
 Equities sell off while Treasury prices rise — the configuration Baele et al.
 (2020) associate with risk-off reallocation. Because it operates across two
 markets at once, it is hard to reconcile with a pure noise or attention story,
 which would not predict a coordinated opposite-signed move.
 
-For context, the largest *baseline* reactions are CPI (ES −23.80***, ZN
-−12.49***) and, on the bond side, NFP (ZN −15.80***) — the payroll component
+For context, the largest *baseline* reactions are CPI (ES `−23.80***`, ZN
+`−12.49***`) and, on the bond side, NFP (ZN `−15.80***`) — the payroll component
 dominates the employment report for Treasuries, consistent with Balduzzi et al.
 (2001).
 
 **The main equity results hold under the real-time-valid lagged FPU.** NFP
-(+8.63**), unemployment rate (−5.41**), consumer credit (−0.93*), retail sales
-(−4.98***) and ISM PMI (+5.29**) all keep sign and significance. Existing home
+(`+8.63**`), unemployment rate (`−5.41**`), consumer credit (`−0.93*`), retail
+sales (`−4.98***`) and ISM PMI (`+5.29**`) all keep sign and significance. Existing home
 sales and construction spending lose significance and are treated with more
 caution. A 75th-percentile regime dummy corroborates the core effects
 independently.
