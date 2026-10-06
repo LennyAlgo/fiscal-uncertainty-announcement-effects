@@ -37,7 +37,7 @@ measured in basis points over a 5-minute window from the announcement bar
 (`ret_sym5` for ES, `zn_sym5` for ZN), with 10-, 15-, 30-minute and symmetric
 10-minute windows retained as robustness.
 
-## Data
+## Data availability
 
 | Input | Source | In repo |
 |---|---|---|
