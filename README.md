@@ -9,7 +9,7 @@ under Fiscal Uncertainty: Evidence from Fiscal Policy Uncertainty and U.S.
 Government Shutdowns* — Lennert Van Steen, Ghent University, supervised by
 Prof. Dr. Mikael Petitjean, academic year 2025–2026.
 
-The full dissertation is included as [`thesis.pdf`](thesis.pdf) — 44 pages, with
+The full dissertation is included as [`thesis.pdf`](thesis.pdf) — 43 pages, with
 the complete argument, literature review and regression tables behind the
 summary below.
 
